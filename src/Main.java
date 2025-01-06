@@ -1,9 +1,9 @@
-import HeroPack.Hero;
-import HeroPack.RandomiseHero;
-import MonsterPack.Dragon;
-import MonsterPack.Goblin;
-import MonsterPack.Monster;
-import MonsterPack.RandomiseMonster;
+import CharactersPack.HeroPack.Hero;
+import CharactersPack.HeroPack.RandomiseHero;
+import CharactersPack.MonsterPack.Dragon;
+import CharactersPack.MonsterPack.Goblin;
+import CharactersPack.MonsterPack.Monster;
+import CharactersPack.MonsterPack.RandomiseMonster;
 
 import java.util.Scanner;
 
@@ -45,9 +45,10 @@ public class Main {
     public static String combatLoop(Hero hero, Monster monster, Scanner sc) {
         while (hero.getHp() > 0 && monster.getHp() > 0) {
 
+            //Hero's attack
             System.out.println("1 : Auto attack\n2 : Spell");
             if (sc.nextInt() == 1) {
-                monster.setHp(monster.getHp() - hero.basicAttack(hero.getAttack(), hero.getCritChance(), hero.getCritDamage(), monster.getDefense(), monster.getDodgeChance(), monster.getName()));
+                monster.setHp(monster.getHp() - hero.basicAttack(monster.getDefense(), monster.getDodgeChance(), monster.getName()));
             }
             else {
 
@@ -70,9 +71,9 @@ public class Main {
 
             System.out.printf("%s's remaining hp : %d\n\n", monster.getName(), monster.getHp());
 
-
+            //Monster's attack
             if (monster.getHp() > 0) {
-                hero.setHp(hero.getHp() - monster.basicAttack(monster.getAttack(), monster.getCritChance(), monster.getCritDamage(), hero.getDefense(), hero.getDodgeChance(), hero.getName()));
+                hero.setHp(hero.getHp() - monster.basicAttack(hero.getDefense(), hero.getDodgeChance(), hero.getName()));
                 System.out.printf("%s's remaining hp : %d\n\n", hero.getName(), hero.getHp());
             }
             System.out.println("Press enter to continue...");

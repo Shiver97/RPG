@@ -1,4 +1,4 @@
-package HeroPack;
+package CharactersPack.HeroPack;
 
 public class RandomiseHero {
     //Stats to return

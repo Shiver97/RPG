@@ -1,4 +1,4 @@
-package MonsterPack;
+package CharactersPack.MonsterPack;
 
 public class RandomiseMonster {
     //Stats to return
