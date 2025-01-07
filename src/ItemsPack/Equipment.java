@@ -36,14 +36,14 @@ public class Equipment extends Items {
 
     @Override
     public String displayItem() {
-        return String.format("%s- Type : %s\n- Equiped : %s\n\n", super.displayItem(), type, isEquiped);
+        return String.format("%s- Type : %s\n- Equiped : %s\n", super.displayItem(), type, isEquiped);
     }
 
     public static Equipment generateItem(String itemType){
 
         String itemName = "";
-        String itemCategory = "";
-        boolean isEquipable = false;
+        String itemCategory = "Equipment";
+        boolean isEquipable = true;
         boolean isEquiped = false;
         equipmentType type = equipmentType.NONE;
         int attack = 0, defense = 0, hp = 0, crit = 0, critDamage = 0;
@@ -51,6 +51,7 @@ public class Equipment extends Items {
         switch (itemType) {
 
             case "Weapon":
+                itemName = "Fighting Spirit Dagger";
                 attack = 5;
                 crit = 20;
                 critDamage = 20;
@@ -60,6 +61,7 @@ public class Equipment extends Items {
                 break;
 
             case "Helmet":
+                itemName = "Fighting Spirit Helmet";
                 defense = 3;
                 hp = 10;
                 type = equipmentType.HELMET;
@@ -67,6 +69,7 @@ public class Equipment extends Items {
                 break;
 
             case "Chest":
+                itemName = "Fighting Spirit Chest";
                 defense = 5;
                 hp = 13;
                 type = equipmentType.CHEST;
@@ -74,6 +77,7 @@ public class Equipment extends Items {
                 break;
 
             case "Legs":
+                itemName = "Fighting Spirit Legs";
                 defense = 4;
                 hp = 11;
                 type = equipmentType.LEGS;
@@ -81,6 +85,7 @@ public class Equipment extends Items {
                 break;
 
             case "Boots":
+                itemName = "Fighting Spirit Boots";
                 defense = 2;
                 hp = 5;
                 type = equipmentType.BOOTS;
@@ -88,13 +93,13 @@ public class Equipment extends Items {
                 break;
 
             case "Gloves":
+                itemName = "Fighting Spirit Gloves";
                 defense = 2;
                 hp = 5;
                 type = equipmentType.GLOVES;
                 System.out.println("Generated gloves :\n- HP : " + hp + "\n- Defense : " + defense);
                 break;
         }
-
         return new Equipment(itemName,itemCategory,isEquipable,isEquiped, type,attack, defense, hp, crit, critDamage);
     }
 }

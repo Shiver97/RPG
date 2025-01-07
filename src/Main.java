@@ -10,13 +10,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
 
-        //Test creation equipment
-        Equipment dagger = Equipment.generateItem("Chest");
+        Hero hero = InitGame.initGame();
 
-
-/*        Hero hero = InitGame.initGame();
-
-        MenuLoop.display(hero, sc);*/
+        MenuLoop.display(hero, sc);
         
     }
 }

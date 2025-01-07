@@ -1,6 +1,9 @@
 package CharactersPack.HeroPack;
 import CharactersPack.Character;
+import ItemsPack.Equipment;
 import ItemsPack.Items;
+
+import java.util.Arrays;
 
 public class Hero extends Character {
     private int xp;
@@ -48,12 +51,19 @@ public class Hero extends Character {
         int critChance = 10;
         int critDamage = 50;
         int dodge = 10;
-        Items[] inventory = new Items[]{};
+        Items[] inventory = new Items[20];
 
         //Randomise, create and display the hero
         RandomiseHero rand = new RandomiseHero();
         Hero hero = new Hero("Martin", rand.getHp(), rand.getHp(), rand.getMana(),rand.getMana(), rand.getAttack(), rand.getDefense(), critChance, critDamage, dodge, 0, 0, inventory);
         System.out.println("New game started ! Your hero got generated");
+        hero.display();
+
+        //Fill inventory with items for test
+        hero.inventory[0] = Equipment.generateItem("Weapon");
+        hero.inventory[1] = Equipment.generateItem("Chest");
+        hero.inventory[2] = Equipment.generateItem("Helmet");
+
         hero.display();
         return hero;
 
@@ -67,6 +77,15 @@ public class Hero extends Character {
     //Rest
     public void rest() {
         this.setHp(this.getMaxHP());
+    }
+
+    //Display inventory
+    public void displayInventory() {
+        for (int i = 0; i < this.inventory.length; i++) {
+            if (this.inventory[i] != null) {
+                System.out.println(this.inventory[i].displayItem());
+            }
+        }
     }
 
     //Spells
