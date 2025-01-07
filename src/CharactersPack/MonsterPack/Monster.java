@@ -53,6 +53,36 @@ public class Monster extends Character {
 
     public void setDodgeChance(int dodgeChance) {this.dodgeChance = dodgeChance;}
 
+    //Create a Monster
+    public static Monster createMonster() {
+
+        //Temporarily hardcoded crit and dodge stats
+        int critChance = 10;
+        int critDamage = 50;
+        int dodge = 10;
+
+        //Random entre 1 et 3
+        int rollMonster = 1 + (int)(Math.random() * 3);
+
+        if (rollMonster == 1) {
+            RandomiseMonster rand = new RandomiseMonster("Goblin");
+            Goblin monster = new Goblin(rand.getName(), rand.getHp(), rand.getHp(), rand.getMana(), rand.getMana(), rand.getAttack(), rand.getDefense(), critChance, critDamage, dodge);
+            monster.display();
+            return monster;
+        }
+       /* else if (rollMonster == 2) {
+            RandomiseMonster rand = new RandomiseMonster("Ork");
+            System.out.println("Ork still in development");
+        }*/
+        else {
+            RandomiseMonster rand = new RandomiseMonster("Dragon");
+            Dragon monster = new Dragon(rand.getName(), rand.getHp(), rand.getHp(), rand.getMana(), rand.getMana(), rand.getAttack(), rand.getDefense(), critChance, critDamage, dodge);
+            monster.display();
+            return monster;
+        }
+
+    }
+
     //Display the created monster
     public void display() {
         System.out.printf("Monster : \033[0;33m%s\033[0m (HP : %d, Mana : %d, Attack : %d, Defense : %d)\n\n", name, hp, mana, attack, defense);

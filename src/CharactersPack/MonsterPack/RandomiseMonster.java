@@ -1,23 +1,23 @@
 package CharactersPack.MonsterPack;
 
 public class RandomiseMonster {
+
     //Stats to return
     public String name;
-    public String mobName;
     public int hp;
     public int mana;
     public int attack;
     public int defense;
 
     //Getters
-    public String getName() {return mobName;}
+    public String getName() {return name;}
     public int getHp() {return hp;}
     public int getMana() {return mana;}
     public int getAttack() {return attack;}
     public int getDefense() {return defense;}
 
-
-    public RandomiseMonster(String name) {
+    //Rolls random stats for a Monster
+    public RandomiseMonster(String mobName) {
 
         int minHP;
         int maxHP;
@@ -27,8 +27,8 @@ public class RandomiseMonster {
         int maxAtkDef;
 
         //Check which Monster to build
-        if (name.equals("Goblin")) {
-            mobName = "Goblin";
+        if (mobName.equals("Goblin")) {
+            name = "Goblin";
             minHP = 30;
             maxHP = 35;
             minMana = 0;
@@ -37,7 +37,7 @@ public class RandomiseMonster {
             maxAtkDef = 10;
         }
         else {
-            mobName = "Dragon";
+            name = "Dragon";
             minHP = 60;
             maxHP = 80;
             minMana = 20;

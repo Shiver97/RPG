@@ -1,18 +1,18 @@
 package CharactersPack.HeroPack;
 import CharactersPack.Character;
+import ItemsPack.Items;
 
 public class Hero extends Character {
     private int xp;
     private int level;
-    private String[] inventory;
+    private Items[] inventory;
 
-    public Hero(String name, int maxHP, int hp, int maxMana, int mana, int attack, int defense, int critChance, int critDamage, int dodgeChance) {
+    public Hero(String name, int maxHP, int hp, int maxMana, int mana, int attack, int defense, int critChance, int critDamage, int dodgeChance, int xp, int level, Items[] inventory) {
         super(name, maxHP, hp, maxMana, mana, attack, defense, critChance, critDamage, dodgeChance);
         this.xp = xp;
         this.level = level;
         this.inventory = inventory;
     }
-
 
     //Getters and Setters
     public String getName() {return name;}
@@ -38,8 +38,26 @@ public class Hero extends Character {
     public void setXp(int xp) {this.xp = xp;}
     public int getLevel() {return level;}
     public void setLevel(int level) {this.level = level;}
-    public String[] getInventory() {return inventory;}
-    public void setInventory(String[] inventory) {this.inventory = inventory;}
+    public Items[] getInventory() {return inventory;}
+    public void setInventory(Items[] inventory) {this.inventory = inventory;}
+
+    //Create a hero
+    public static Hero createHero() {
+
+        //Temporarily hardcoded crit and dodge stats
+        int critChance = 10;
+        int critDamage = 50;
+        int dodge = 10;
+        Items[] inventory = new Items[]{};
+
+        //Randomise, create and display the hero
+        RandomiseHero rand = new RandomiseHero();
+        Hero hero = new Hero("Martin", rand.getHp(), rand.getHp(), rand.getMana(),rand.getMana(), rand.getAttack(), rand.getDefense(), critChance, critDamage, dodge, 0, 0, inventory);
+        System.out.println("New game started ! Your hero got generated");
+        hero.display();
+        return hero;
+
+    }
 
     //Display the created character
     public void display() {
@@ -50,7 +68,6 @@ public class Hero extends Character {
     public void rest() {
         this.setHp(this.getMaxHP());
     }
-
 
     //Spells
     public int fireBall(int heroAttack, int monsterDefense, String monsterType) {
