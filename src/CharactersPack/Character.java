@@ -57,4 +57,8 @@ public class Character {
         }
         return (int)damages;
     }
+
+    public void takeDamage(int damage) {
+        this.hp -= damage;
+    }
 }

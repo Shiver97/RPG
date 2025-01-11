@@ -13,7 +13,8 @@ public class CombatLoop {
             //Hero's attack
             System.out.println("1 : Auto attack\n2 : Spell");
             if (sc.nextInt() == 1) {
-                monster.setHp(monster.getHp() - hero.basicAttack(monster.getDefense(), monster.getDodgeChance(), monster.getName()));
+                int damage = hero.basicAttack(monster.getDefense(), monster.getDodgeChance(), monster.getName());
+                monster.takeDamage(damage);
             }
 
             else {
@@ -41,7 +42,8 @@ public class CombatLoop {
 
             //Monster's attack
             if (monster.getHp() > 0) {
-                hero.setHp(hero.getHp() - monster.basicAttack(hero.getDefense(), hero.getDodgeChance(), hero.getName()));
+                int damage = monster.basicAttack(hero.getDefense(), hero.getDodgeChance(), hero.getName());
+                hero.takeDamage(damage);
                 System.out.printf("%s's remaining hp : %d\n\n", hero.getName(), hero.getHp());
             }
 
