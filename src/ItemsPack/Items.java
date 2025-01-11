@@ -16,4 +16,5 @@ public class Items {
         return String.format("- Name : %s\n- Category : %s\n", itemName, itemCategory);
     }
 
+    public String getName() {return this.itemName;}
 }

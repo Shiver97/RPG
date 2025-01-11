@@ -61,8 +61,9 @@ public class Monster extends Character {
         int critDamage = 50;
         int dodge = 10;
 
-        //Random entre 1 et 3
-        int rollMonster = 1 + (int)(Math.random() * 3);
+        //Random entre 1 et 2
+        Random random = new Random();
+        int rollMonster = 1 + random.nextInt(1);
 
         if (rollMonster == 1) {
             RandomiseMonster rand = new RandomiseMonster("Goblin");

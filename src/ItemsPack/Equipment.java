@@ -4,13 +4,13 @@ public class Equipment extends Items {
 
     public enum equipmentType {WEAPON, HELMET, CHEST, LEGS, GLOVES, BOOTS, NONE};
 
-    private boolean isEquiped;
+    private boolean isEquipped;
     private equipmentType type;
     private int attack, defense, hp, crit, critDamage;
 
-    public Equipment(String itemName, String itemCategory, boolean isEquipable, boolean isEquiped, equipmentType type, int attack, int defense, int hp, int crit, int critDamage) {
+    public Equipment(String itemName, String itemCategory, boolean isEquipable, boolean isEquipped, equipmentType type, int attack, int defense, int hp, int crit, int critDamage) {
         super(itemName, itemCategory, isEquipable);
-        this.isEquiped = isEquiped;
+        this.isEquipped = isEquipped;
         this.type = type;
         this.attack = attack;
         this.defense = defense;
@@ -19,8 +19,9 @@ public class Equipment extends Items {
         this.critDamage = critDamage;
     }
 
-    public boolean isEquiped() {return isEquiped;}
-    public void setEquiped(boolean equiped) {isEquiped = equiped;}
+    public boolean isEquipped() {return isEquipped;}
+    public void setEquipped(boolean equipped) {
+        isEquipped = equipped;}
     public equipmentType getType() {return type;}
     public void setType(equipmentType type) {this.type = type;}
     public int getAttack() {return attack;}
@@ -36,18 +37,21 @@ public class Equipment extends Items {
 
     @Override
     public String displayItem() {
-        return String.format("%s- Type : %s\n- Equiped : %s\n", super.displayItem(), type, isEquiped);
+        return String.format("%s- Type : %s\n- Equipped : %s\n", super.displayItem(), type, isEquipped);
     }
 
+    //Function to generate equipable gear
     public static Equipment generateItem(String itemType){
 
+        //Set all variables necessary for Equipment generation
         String itemName = "";
         String itemCategory = "Equipment";
         boolean isEquipable = true;
-        boolean isEquiped = false;
+        boolean isEquipped = false;
         equipmentType type = equipmentType.NONE;
         int attack = 0, defense = 0, hp = 0, crit = 0, critDamage = 0;
 
+        //Switch between all different gear parts
         switch (itemType) {
 
             case "Weapon":
@@ -56,7 +60,7 @@ public class Equipment extends Items {
                 crit = 20;
                 critDamage = 20;
                 type = equipmentType.WEAPON;
-                System.out.println("Generated a dagger :\n- Attack : " + attack + "\n- Crit : " + crit + "\n- CritDamage : " + critDamage);
+                System.out.println("Generated a dagger :\n- Attack : " + attack + "\n- Crit : " + crit + "\n- CritDamage : " + critDamage + "\n");
 
                 break;
 
@@ -65,7 +69,7 @@ public class Equipment extends Items {
                 defense = 3;
                 hp = 10;
                 type = equipmentType.HELMET;
-                System.out.println("Generated a helmet :\n- HP : " + hp + "\n- Defense : " + defense);
+                System.out.println("Generated a helmet :\n- HP : " + hp + "\n- Defense : " + defense + "\n");
                 break;
 
             case "Chest":
@@ -73,7 +77,7 @@ public class Equipment extends Items {
                 defense = 5;
                 hp = 13;
                 type = equipmentType.CHEST;
-                System.out.println("Generated a chest :\n- HP : " + hp + "\n- Defense : " + defense);
+                System.out.println("Generated a chest :\n- HP : " + hp + "\n- Defense : " + defense + "\n");
                 break;
 
             case "Legs":
@@ -81,7 +85,7 @@ public class Equipment extends Items {
                 defense = 4;
                 hp = 11;
                 type = equipmentType.LEGS;
-                System.out.println("Generated a legging :\n- HP : " + hp + "\n- Defense : " + defense);
+                System.out.println("Generated a legging :\n- HP : " + hp + "\n- Defense : " + defense + "\n");
                 break;
 
             case "Boots":
@@ -89,7 +93,7 @@ public class Equipment extends Items {
                 defense = 2;
                 hp = 5;
                 type = equipmentType.BOOTS;
-                System.out.println("Generated boots :\n- HP : " + hp + "\n- Defense : " + defense);
+                System.out.println("Generated boots :\n- HP : " + hp + "\n- Defense : " + defense + "\n");
                 break;
 
             case "Gloves":
@@ -97,9 +101,9 @@ public class Equipment extends Items {
                 defense = 2;
                 hp = 5;
                 type = equipmentType.GLOVES;
-                System.out.println("Generated gloves :\n- HP : " + hp + "\n- Defense : " + defense);
+                System.out.println("Generated gloves :\n- HP : " + hp + "\n- Defense : " + defense + "\n");
                 break;
         }
-        return new Equipment(itemName,itemCategory,isEquipable,isEquiped, type,attack, defense, hp, crit, critDamage);
+        return new Equipment(itemName,itemCategory,isEquipable, isEquipped, type,attack, defense, hp, crit, critDamage);
     }
 }

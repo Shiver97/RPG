@@ -1,7 +1,6 @@
 package MenusPack;
 
 import CharactersPack.HeroPack.Hero;
-
 import java.util.Scanner;
 
 public class InitGame {

@@ -2,6 +2,8 @@ package MenusPack;
 
 import CharactersPack.HeroPack.Hero;
 import CharactersPack.MonsterPack.Monster;
+import ItemsPack.Equipment;
+
 import java.util.Scanner;
 
 public class MenuLoop {
@@ -16,7 +18,23 @@ public class MenuLoop {
 
             if (userChoice == 1) {
                 Monster monster = Monster.createMonster();
-                System.out.println(CombatLoop.display(hero, monster, sc));
+
+                //CombatLoop with boolean return to determinate if you won the fight
+                if (CombatLoop.display(hero, monster, sc)) {
+                    System.out.printf("You won the fight against the %s !\n\n", monster.getName());
+
+                    //Rolling a dice to check if you loot an item. If yes, return the corresponding item
+                    Equipment looted = (LootingCalc.calculateLoot(monster.getName()));
+
+                    //If you looted something, adds it to the inventory
+                    if (looted != null) {
+                        hero.addItemToInventory(looted);
+                    }
+
+                }
+                else {
+                    System.out.println("You lost the fight ..");
+                }
 
             } else if (userChoice == 2) {
                 System.out.println("You rest and regenerate maximum HP and Mana.\n\n");

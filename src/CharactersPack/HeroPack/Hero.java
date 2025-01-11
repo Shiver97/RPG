@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class Hero extends Character {
     private int xp;
     private int level;
-    private Items[] inventory;
+    public Items[] inventory;
 
     public Hero(String name, int maxHP, int hp, int maxMana, int mana, int attack, int defense, int critChance, int critDamage, int dodgeChance, int xp, int level, Items[] inventory) {
         super(name, maxHP, hp, maxMana, mana, attack, defense, critChance, critDamage, dodgeChance);
@@ -60,11 +60,10 @@ public class Hero extends Character {
         hero.display();
 
         //Fill inventory with items for test
-        hero.inventory[0] = Equipment.generateItem("Weapon");
+/*        hero.inventory[0] = Equipment.generateItem("Weapon");
         hero.inventory[1] = Equipment.generateItem("Chest");
-        hero.inventory[2] = Equipment.generateItem("Helmet");
+        hero.inventory[2] = Equipment.generateItem("Helmet");*/
 
-        hero.display();
         return hero;
 
     }
@@ -95,4 +94,16 @@ public class Hero extends Character {
         System.out.printf("\033[0;34m%s\033[0m used a\033[38;5;214m Fireball\033[0m spell and inflicted\033[0;31m %d damage(s) to the %s\033[0m\n\n", name, damages, monsterType);
         return damages;
     }
+
+    public void addItemToInventory(Items item) {
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i] == null) { // Trouver une case vide
+                inventory[i] = item;   // Ajouter l'objet
+                System.out.println(item.getName() + " has been added to your inventory.\n");
+                return; // Arrêter après avoir ajouté l'objet
+            }
+        }
+        System.out.println("Inventory is full! Cannot add " + item.getName() + "\n");
+    }
+
 }

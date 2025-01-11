@@ -6,7 +6,10 @@ import CharactersPack.MonsterPack.Monster;
 import java.util.Scanner;
 
 public class CombatLoop {
-    public static String display(Hero hero, Monster monster, Scanner sc) {
+    public static boolean display(Hero hero, Monster monster, Scanner sc) {
+
+        //Variable to decide if you loot something
+        boolean wonFight;
 
         while (hero.getHp() > 0 && monster.getHp() > 0) {
 
@@ -51,12 +54,12 @@ public class CombatLoop {
             sc.nextLine();
         }
 
-        if (hero.getHp() <= 0) {
-            return hero.getName() + " has lost!";
+        if (hero.getHp() > 0) {
+            return wonFight = true;
         }
 
         else {
-            return hero.getName() + " has won!";
+            return wonFight = false;
         }
     }
 }
