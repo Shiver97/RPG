@@ -2,12 +2,14 @@ package MenusPack;
 
 import CharactersPack.HeroPack.Hero;
 import CharactersPack.MonsterPack.Monster;
+import Files.Save;
 import ItemsPack.Equipment;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuLoop {
-    public static void display(Hero hero, Scanner sc) {
+    public static void display(Hero hero, Scanner sc) throws IOException {
         //Combat loop and print winner
         boolean continueGame = false;
         do {
@@ -47,7 +49,9 @@ public class MenuLoop {
             }
 
             else {
-                System.out.println("Work in Progress.\n\n");
+                System.out.println("Save game.\n\n");
+                Save.save(hero);
+                System.out.println("Game saved.\n\n");
             }
 
             System.out.println("Do you want to keep going ? Press 1 for Yes, 2 for No.");

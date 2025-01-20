@@ -1,0 +1,3 @@
+Name : Martin
+Max HP : 58
+Attack : 10Defense : 11
